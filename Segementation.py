@@ -122,8 +122,8 @@ class NetworkManager:
                  ("hr1", "192.168.2.10", "it1", True, "HR1 -> IT1 (should work)"), 
                  ("fin1", "192.168.3.11", "fin2", True, "Finance1 -> Finance2 (should work)")]
         
-        for i, (source, dest_ip, dest_name, should_work) in enumerate(tests, 1):
-            print(f"\n{i}. Testing {description}:")
+        for i, (source, dest_ip, dest_name, should_work, description) in enumerate(tests, 1):
+            print(f"\n{i}. {description}:")
             result = self.run_cmd(f"timeout 5 ip netns exec {source} ping -c 2 {dest_ip}", check=False)
             if should_work:
                 if result.returncode == 0:
